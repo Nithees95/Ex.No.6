@@ -1,22 +1,34 @@
 # Ex.No.6 AI-Assisted Programming and Debugging
 
-### Date: 02-09-2026
-### Name: YEGAVINTI NITHEESH 
+### Date: 21-09-2026
+### Name: NITHEESH YEGAVINTI 
 ### Register no.212224040370
 # Aim: 
-Write and implement Python code that integrates with multiple AI tools to automate the task of interacting with APIs, comparing outputs, and generating actionable insights with Multiple AI Tools
+Write and implement Python, C, and Java programs using AI assistance to develop a Student Performance Analysis System, identify and debug errors, optimize the code, analyze time and space complexity, generate unit tests, and compare manual coding with AI-assisted coding.
 
 # AI Tools Required:
 ChatGPT
 
 # Explanation:
-Experiment the persona pattern as a programmer for any specific applications related with your interesting area. 
-Generate the outoput using more than one AI tool and based on the code generation analyse and discussing that. 
-Learnerss generate
+In this experiment, AI is used as a programming assistant for developing applications related to student performance analysis.
+
+The AI tool is used to:
+
+Generate Python programs
+Generate C programs
+Generate Java programs
+Identify programming bugs
+Optimize code
+Explain time and space complexity
+Generate unit tests
+Compare manual coding with AI-assisted coding
+
+Learners generate
 
 Python
 C
 Java
+
 using AI.
 
 Then
@@ -26,7 +38,8 @@ optimise code
 explain complexity
 generate unit tests
 Finally compare manual coding versus AI-assisted coding. 
-Deliverable
+
+## Deliverable
 
 Code quality analysis.
 
@@ -34,7 +47,11 @@ Code quality analysis.
 
 ## Objective
 
-The objective of this experiment is to learn how AI tools can assist in programming and debugging tasks related to mini and final year projects. The experiment focuses on using effective prompts to generate Python, C, and Java programs, identify bugs, optimize code, explain time and space complexity, and generate unit tests. Finally, manual coding is compared with AI-assisted coding based on development time, correctness, efficiency, readability, and code quality.
+The objective of this experiment is to understand how AI tools can assist in programming and debugging tasks. A Student Performance Analysis System is used as the application domain.
+
+The experiment demonstrates how AI can generate Python, C, and Java programs, identify programming errors, optimize solutions, explain algorithmic complexity, and generate unit tests.
+
+Finally, manual coding is compared with AI-assisted coding based on development time, correctness, efficiency, readability, testing, and code quality.
 
 ## Tools Used
 
@@ -46,7 +63,11 @@ The objective of this experiment is to learn how AI tools can assist in programm
 
 ## Exercise Description
 
-In this experiment, AI is used as a programming assistant to generate programs in Python, C, and Java. The generated programs are tested and analyzed. AI is then used to identify programming errors, suggest optimized solutions, explain algorithmic complexity, and generate unit test cases. The results are compared with manually written code to understand the advantages and limitations of AI-assisted programming.
+In this experiment, AI is used to develop programs for analyzing student marks and performance.
+
+The generated programs are executed and tested. AI is then used to identify errors, suggest optimized implementations, explain time and space complexity, and generate suitable unit test cases.
+
+The results are compared with manually written programs to understand the advantages and limitations of AI-assisted programming
 
 ---
 
@@ -55,35 +76,54 @@ In this experiment, AI is used as a programming assistant to generate programs i
 ### Prompt
 
 ```text
-Write a Python program to find the largest element in a list.
-The program should handle an empty list and should be simple and efficient.
+Write a Python program to calculate the average marks of a student
+from a list of subject marks.
+
+The program should validate the input, handle an empty list,
+calculate the average, and display the student's performance.
 Also explain the time and space complexity.
 ```
 
 ### AI-Generated Code
 
 ```python
-def find_largest(numbers):
-    if not numbers:
+def calculate_average(marks):
+    if not marks:
         return None
 
-    largest = numbers[0]
-
-    for num in numbers:
-        if num > largest:
-            largest = num
-
-    return largest
+    total = sum(marks)
+    return total / len(marks)
 
 
-numbers = [10, 25, 7, 42, 18]
-print("Largest element:", find_largest(numbers))
+def performance(average):
+    if average >= 90:
+        return "Excellent"
+    elif average >= 75:
+        return "Very Good"
+    elif average >= 60:
+        return "Good"
+    elif average >= 50:
+        return "Average"
+    else:
+        return "Needs Improvement"
+
+
+marks = [85, 78, 92, 88, 76]
+
+average = calculate_average(marks)
+
+if average is not None:
+    print("Average Marks:", average)
+    print("Performance:", performance(average))
+else:
+    print("No marks available")
 ```
 
 ### Output
 
 ```text
-Largest element: 42
+Average Marks: 83.8
+Performance: Very GoodLargest element: 42
 ```
 
 ### Complexity Analysis
@@ -100,8 +140,11 @@ The program scans the list once, so the time complexity is `O(n)`. Only one addi
 ### Prompt
 
 ```text
-Write a C program to check whether a given number is prime.
-Identify possible bugs, optimize the program, and explain its time and space complexity.
+Write a C program to find the highest mark among a group of students.
+
+The program should accept marks for n students, find the highest mark,
+identify the student who obtained it, and explain the time and
+space complexity.
 ```
 
 ### AI-Generated Code
@@ -109,28 +152,38 @@ Identify possible bugs, optimize the program, and explain its time and space com
 ```c
 #include <stdio.h>
 
-int isPrime(int n) {
-    if (n < 2)
-        return 0;
-
-    for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0)
-            return 0;
-    }
-
-    return 1;
-}
-
 int main() {
     int n;
 
-    printf("Enter a number: ");
+    printf("Enter number of students: ");
     scanf("%d", &n);
 
-    if (isPrime(n))
-        printf("%d is a prime number\n", n);
-    else
-        printf("%d is not a prime number\n", n);
+    if (n <= 0) {
+        printf("Invalid number of students\n");
+        return 0;
+    }
+
+    int marks[n];
+
+    printf("Enter marks:\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("Student %d: ", i + 1);
+        scanf("%d", &marks[i]);
+    }
+
+    int highest = marks[0];
+    int student = 1;
+
+    for (int i = 1; i < n; i++) {
+        if (marks[i] > highest) {
+            highest = marks[i];
+            student = i + 1;
+        }
+    }
+
+    printf("Highest Mark: %d\n", highest);
+    printf("Student: %d\n", student);
 
     return 0;
 }
@@ -139,8 +192,16 @@ int main() {
 ### Output
 
 ```text
-Enter a number: 29
-29 is a prime number
+Enter number of students: 5
+Enter marks:
+Student 1: 78
+Student 2: 92
+Student 3: 85
+Student 4: 67
+Student 5: 88
+
+Highest Mark: 92
+Student: 2
 ```
 
 ### Optimization
@@ -161,31 +222,35 @@ Therefore, the optimized solution significantly reduces the number of iterations
 ### Prompt
 
 ```text
-Write a Java program to find duplicate elements in an integer array.
+Write a Java program to count the number of students who passed
+and failed based on their marks.
+
+Consider marks greater than or equal to 50 as pass.
 Use an efficient approach and explain the time and space complexity.
 ```
 
 ### AI-Generated Code
 
 ```java
-import java.util.HashSet;
-
-public class DuplicateElements {
+public class StudentResult {
 
     public static void main(String[] args) {
 
-        int[] numbers = {10, 20, 30, 20, 40, 10, 50};
+        int[] marks = {78, 45, 91, 32, 67, 49, 85};
 
-        HashSet<Integer> seen = new HashSet<>();
-        HashSet<Integer> duplicates = new HashSet<>();
+        int passed = 0;
+        int failed = 0;
 
-        for (int num : numbers) {
-            if (!seen.add(num)) {
-                duplicates.add(num);
+        for (int mark : marks) {
+            if (mark >= 50) {
+                passed++;
+            } else {
+                failed++;
             }
         }
 
-        System.out.println("Duplicate elements: " + duplicates);
+        System.out.println("Number of Passed Students: " + passed);
+        System.out.println("Number of Failed Students: " + failed);
     }
 }
 ```
@@ -193,7 +258,8 @@ public class DuplicateElements {
 ### Output
 
 ```text
-Duplicate elements: [10, 20]
+Number of Passed Students: 4
+Number of Failed Students: 3
 ```
 
 ### Complexity Analysis
@@ -211,12 +277,13 @@ The `HashSet` provides approximately constant-time insertion and lookup on avera
 
 ```text
 Analyze the following Java code and identify the bug.
+
 Explain why the bug occurs and provide the corrected version.
 
-int[] arr = {10, 20, 30, 40};
+int[] marks = {78, 85, 92, 67};
 
-for (int i = 0; i <= arr.length; i++) {
-    System.out.println(arr[i]);
+for (int i = 0; i <= marks.length; i++) {
+    System.out.println(marks[i]);
 }
 ```
 
@@ -225,7 +292,7 @@ for (int i = 0; i <= arr.length; i++) {
 The bug is present in the loop condition:
 
 ```java
-i <= arr.length
+i <= marks.length
 ```
 
 For an array of length 4, the valid indexes are:
@@ -234,25 +301,25 @@ For an array of length 4, the valid indexes are:
 0, 1, 2, 3
 ```
 
-The condition `i <= arr.length` allows `i` to become `4`. Accessing `arr[4]` is invalid because the last valid index is `3`. This results in an `ArrayIndexOutOfBoundsException`.
+The condition `i <= marks.length` allows `i` to become `4`. Accessing `marks[4]` is invalid because the last valid index is `3`. This results in an `ArrayIndexOutOfBoundsException`.
 
 ### Corrected Code
 
 ```java
-int[] arr = {10, 20, 30, 40};
+int[] marks = {78, 85, 92, 67};
 
-for (int i = 0; i < arr.length; i++) {
-    System.out.println(arr[i]);
+for (int i = 0; i < marks.length; i++) {
+    System.out.println(marks[i]);
 }
 ```
 
 ### Output
 
 ```text
-10
-20
-30
-40
+78
+85
+92
+67
 ```
 
 ### Result
@@ -266,43 +333,46 @@ The AI successfully identified the array indexing error and provided the correct
 ### Original Code
 
 ```python
-numbers = [1, 2, 3, 4, 5]
-result = []
+marks = [78, 85, 92, 67, 45, 88]
 
-for i in numbers:
-    if i % 2 == 0:
-        result.append(i)
+passed = []
 
-print(result)
+for mark in marks:
+    if mark >= 50:
+        passed.append(mark)
+
+print(passed)
 ```
 
 ### Prompt
 
 ```text
-Optimize the following Python code for better readability and performance while maintaining the same output:
+Optimize the following Python code for better readability
+while maintaining the same output.
 
-numbers = [1, 2, 3, 4, 5]
-result = []
+marks = [78, 85, 92, 67, 45, 88]
 
-for i in numbers:
-    if i % 2 == 0:
-        result.append(i)
+passed = []
+
+for mark in marks:
+    if mark >= 50:
+        passed.append(mark)
 ```
 
 ### AI-Optimized Code
 
 ```python
-numbers = [1, 2, 3, 4, 5]
+marks = [78, 85, 92, 67, 45, 88]
 
-result = [i for i in numbers if i % 2 == 0]
+passed = [mark for mark in marks if mark >= 50]
 
-print(result)
+print(passed)
 ```
 
 ### Output
 
 ```text
-[2, 4]
+[78, 85, 92, 67, 88]
 ```
 
 ### Analysis
@@ -318,33 +388,45 @@ The time complexity remains `O(n)` because every element must be checked. The sp
 ### Prompt
 
 ```text
-Generate unit tests for the Python function find_largest(numbers).
-Include normal cases, an empty list, negative numbers, duplicate values,
-and a single-element list.
+Generate unit tests for the Python function calculate_average(marks).
+
+Include normal marks, an empty list, a single mark,
+all equal marks, and decimal values.
 ```
 
 ### AI-Generated Unit Tests
 
 ```python
-def test_find_largest():
-    assert find_largest([10, 20, 30]) == 30
-    assert find_largest([-5, -2, -10]) == -2
-    assert find_largest([7]) == 7
-    assert find_largest([]) is None
-    assert find_largest([5, 5, 5]) == 5
+def calculate_average(marks):
+    if not marks:
+        return None
 
-print("All test cases passed")
+    return sum(marks) / len(marks)
+
+
+def test_calculate_average():
+    assert calculate_average([80, 90, 70]) == 80
+    assert calculate_average([]) is None
+    assert calculate_average([75]) == 75
+    assert calculate_average([50, 50, 50]) == 50
+    assert calculate_average([85.5, 90.5]) == 88
+
+    print("All test cases passed")
+
+
+test_calculate_average()
 ```
 
 ### Test Cases
 
-| Test Case        | Input           | Expected Output |
-| ---------------- | --------------- | --------------- |
-| Normal case      | `[10, 20, 30]`  | `30`            |
-| Negative numbers | `[-5, -2, -10]` | `-2`            |
-| Single element   | `[7]`           | `7`             |
-| Empty list       | `[]`            | `None`          |
-| Duplicate values | `[5, 5, 5]`     | `5`             |
+| Test Case     | Input          | Expected Output |
+| ------------- | -------------- | --------------- |
+| Normal case   | `[80, 90, 70]` | `80`            |
+| Empty list    | `[]`           | `None`          |
+| Single mark   | `[75]`         | `75`            |
+| Equal marks   | `[50, 50, 50]` | `50`            |
+| Decimal marks | `[85.5, 90.5]` | `88`            |
+
 
 ### Output
 
@@ -354,29 +436,33 @@ All test cases passed
 
 ### Result
 
-The generated unit tests successfully cover normal inputs, boundary conditions, negative values, duplicate values, and empty input. This improves the reliability of the program and helps identify potential errors before deployment.
+The generated unit tests cover normal input, boundary conditions, single-element input, equal values, and decimal values.
+
+These tests help verify the correctness of the calculate_average() function
 
 ---
 
 # 7. Manual Coding vs AI-Assisted Coding
 
-| Criteria            | Manual Coding                               | AI-Assisted Coding                     |
-| ------------------- | ------------------------------------------- | -------------------------------------- |
-| Development Time    | Higher                                      | Lower                                  |
-| Code Generation     | Fully manual                                | AI-generated with prompts              |
-| Bug Identification  | Requires manual debugging                   | Faster with AI assistance              |
-| Optimization        | Depends on programmer experience            | AI can suggest alternatives            |
-| Complexity Analysis | Requires manual knowledge                   | Quickly explained by AI                |
-| Unit Test Creation  | Requires additional effort                  | Can be generated automatically         |
-| Code Readability    | Depends on developer                        | Generally readable but requires review |
-| Learning            | Strong understanding through implementation | Faster learning through explanations   |
-| Accuracy            | Depends on programmer                       | Must be verified                       |
-| Productivity        | Moderate                                    | Higher                                 |
+| Criteria            | Manual Coding                               | AI-Assisted Coding                                    |
+| ------------------- | ------------------------------------------- | ----------------------------------------------------- |
+| Development Time    | Programmer writes the solution manually     | AI can generate an initial solution quickly           |
+| Code Generation     | Fully manual                                | Generated using prompts                               |
+| Bug Identification  | Requires manual debugging                   | AI can suggest possible bugs                          |
+| Optimization        | Depends on programmer knowledge             | AI can suggest alternative implementations            |
+| Complexity Analysis | Requires algorithm knowledge                | AI can explain complexity                             |
+| Unit Test Creation  | Tests need to be written manually           | AI can generate test cases                            |
+| Code Readability    | Depends on programmer                       | AI-generated code may be readable but requires review |
+| Learning            | Strong understanding through implementation | Provides explanations and examples                    |
+| Accuracy            | Depends on programmer                       | Must be tested and verified                           |
+| Productivity        | Depends on experience and task              | Can reduce repetitive coding effort                   |
 
 ---
 
 # Result
 
-The experiment successfully demonstrated the application of AI-assisted programming and debugging. Python, C, and Java programs were generated using carefully designed prompts. The programs were tested for correctness, bugs were identified and fixed, code was optimized, algorithmic complexity was analyzed, and unit tests were generated.
+The experiment successfully demonstrated the use of AI-assisted programming and debugging for a Student Performance Analysis System.
 
-The comparison showed that AI-assisted programming can reduce development time and provide useful suggestions for debugging, optimization, and testing. However, manual verification remains necessary to ensure correctness, efficiency, security, and suitability for the intended application.
+Python, C, and Java programs were generated using carefully designed prompts. The programs were tested, programming bugs were identified and corrected, code was optimized, time and space complexity were analyzed, and unit test cases were generated.
+
+The comparison demonstrated that AI can assist programmers in code generation, debugging, optimization, complexity analysis, and test generation. However, the generated code should always be reviewed and tested by the programmer to verify correctness, efficiency, security, and suitability for the intended application.
